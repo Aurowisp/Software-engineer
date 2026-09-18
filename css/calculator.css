@@ -1,0 +1,221 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #e9eef1;
+  color: #172529;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 280px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 15% 10%, rgb(255 255 255 / 92%) 0 8rem, transparent 24rem),
+    linear-gradient(145deg, #edf2f3 0%, #dce6e6 100%);
+}
+
+button,
+output {
+  font: inherit;
+}
+
+.page-shell {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.calculator {
+  width: min(100%, 25rem);
+  padding: clamp(1rem, 4vw, 1.5rem);
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 1.75rem;
+  background: rgb(248 250 249 / 92%);
+  box-shadow: 0 1.5rem 4rem rgb(28 56 61 / 18%);
+  backdrop-filter: blur(1rem);
+}
+
+.calculator__header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.2rem 0.25rem 1.15rem;
+}
+
+.calculator__mark {
+  display: grid;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: #1c665f;
+  color: #fff;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.calculator__eyebrow {
+  margin: 0 0 0.15rem;
+  color: #6c7f82;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+}
+
+h1 {
+  margin: 0;
+  color: #203236;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+.display {
+  display: flex;
+  min-height: 8.5rem;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  padding: 1.15rem 1.25rem;
+  overflow: hidden;
+  border: 1px solid #cfdbda;
+  border-radius: 1.25rem;
+  background: #e2ebe9;
+  box-shadow: inset 0 2px 6px rgb(45 74 75 / 7%);
+  text-align: right;
+}
+
+.display__expression {
+  min-height: 1.4em;
+  overflow: hidden;
+  color: #587174;
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display__value {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  color: #102d2b;
+  font-size: clamp(2.25rem, 12vw, 3.4rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display__value[data-error="true"] {
+  color: #a33e32;
+  font-size: clamp(1.6rem, 8vw, 2.25rem);
+  letter-spacing: -0.025em;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.5rem, 2.2vw, 0.75rem);
+}
+
+.key {
+  min-width: 0;
+  min-height: 3.65rem;
+  border: 1px solid #d5dfde;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0.25rem 0.55rem rgb(32 55 58 / 8%);
+  color: #213538;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 650;
+  transition: background-color 120ms ease, box-shadow 120ms ease, transform 80ms ease;
+  touch-action: manipulation;
+}
+
+.key:hover {
+  background: #f1f6f5;
+}
+
+.key:active,
+.key.is-active {
+  box-shadow: inset 0 2px 5px rgb(25 54 57 / 15%);
+  transform: translateY(1px);
+}
+
+.key:focus-visible {
+  outline: 3px solid #79aaa5;
+  outline-offset: 2px;
+}
+
+.key--wide {
+  grid-column: span 2;
+}
+
+.key--utility {
+  background: #e8eeed;
+  color: #40575a;
+}
+
+.key--operator {
+  border-color: #c9dcda;
+  background: #dcebe8;
+  color: #15564f;
+  font-size: 1.35rem;
+}
+
+.key--operator.is-selected {
+  border-color: #1c665f;
+  background: #1c665f;
+  color: #fff;
+}
+
+.key--equals {
+  border-color: #b85a43;
+  background: #c9674e;
+  color: #fff;
+  font-size: 1.35rem;
+}
+
+.key--equals:hover {
+  background: #b95b44;
+}
+
+.keyboard-hint {
+  margin: 1rem 0 0.1rem;
+  color: #718083;
+  font-size: 0.72rem;
+  text-align: center;
+}
+
+@media (max-width: 360px) {
+  .page-shell {
+    padding: 0.6rem;
+  }
+
+  .calculator {
+    padding: 0.85rem;
+    border-radius: 1.25rem;
+  }
+
+  .key {
+    min-height: 3.25rem;
+  }
+
+  .keyboard-hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key {
+    transition: none;
+  }
+}

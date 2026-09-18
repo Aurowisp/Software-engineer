@@ -1,0 +1,13 @@
+{
+  "name": "web-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A modular front-end calculator for a software engineering course project.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --test-isolation=none"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
